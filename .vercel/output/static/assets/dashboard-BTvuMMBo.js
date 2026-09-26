@@ -1,0 +1,1 @@
+import{a as e,t}from"./useNavigate-DrqvhG58.js";var n=e(),r=()=>(0,n.jsx)(t,{to:`/staff/dashboard`});export{r as component};
