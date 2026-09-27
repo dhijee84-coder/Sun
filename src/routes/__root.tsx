@@ -21,6 +21,7 @@ export const Route = createRootRoute({
       { rel: "stylesheet", href: appCss },
       { rel: "manifest", href: "/__grok/manifest.webmanifest" },
       { rel: "apple-touch-icon", href: "/__grok/icon-180.png" },
+      { rel: "preload", as: "image", href: "/img/hero-farm.jpg" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com" },
       {
@@ -39,7 +40,7 @@ function Root() {
         <HeadContent />
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem("solan-theme");if(t!=="light"&&t!=="dark"){t=window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}document.documentElement.setAttribute("data-theme",t)}catch(e){}})();`,
+            __html: `(function(){try{var t=localStorage.getItem("solan-theme");if(t!=="light"&&t!=="dark"){t=window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}document.documentElement.setAttribute("data-theme",t);var s=Math.min(screen.width||0,screen.height||0);var touch=(navigator.maxTouchPoints||0)>0||"ontouchstart"in window;if((innerWidth&&innerWidth<768)||(touch&&s>0&&s<820)){document.documentElement.setAttribute("data-layout","phone")}else{document.documentElement.setAttribute("data-layout","desktop")}}catch(e){}})();`,
           }}
         />
       </head>

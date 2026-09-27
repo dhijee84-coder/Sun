@@ -3,6 +3,7 @@ import { UserButton } from "@/lib/auth/gates";
 import { ThemeToggle } from "./theme-toggle";
 import { Sun } from "lucide-react";
 import { useState } from "react";
+import { useIsPhone } from "@/lib/solan/layout";
 
 export type NavItem = { id: string; label: string };
 
@@ -22,9 +23,10 @@ export function PortalShell({
   children: React.ReactNode;
 }) {
   const [open, setOpen] = useState(false);
+  const phone = useIsPhone();
   return (
-    <div className="min-h-screen bg-bg text-fg md:grid md:grid-cols-[240px_1fr]">
-      <aside className={`border-line bg-card md:sticky md:top-0 md:h-screen md:border-r ${open ? "block" : "hidden"} md:block`}>
+    <div className={`portal-grid min-h-screen bg-bg text-fg ${phone ? "block" : "md:grid md:grid-cols-[240px_1fr]"}`}>
+      <aside className={`portal-aside border-line bg-card ${phone ? (open ? "fixed inset-y-0 right-0 z-40 mt-16 w-[min(86vw,320px)] overflow-auto border-l shadow-xl" : "hidden") : `md:sticky md:top-0 md:h-screen md:border-r ${open ? "block" : "hidden"} md:block`}`}>
         <div className="flex h-[64px] items-center gap-2 border-b border-line px-4">
           <Link to="/" className="flex items-center gap-2 font-display text-sm font-bold text-fg no-underline">
             <span className="inline-flex size-8 items-center justify-center rounded-md bg-gold text-bg"><Sun className="size-4" /></span>
@@ -48,7 +50,7 @@ export function PortalShell({
       <div>
         <header className="sticky top-0 z-30 flex h-[64px] items-center justify-between gap-3 border-b border-line px-4" style={{ background: "var(--sol-header)" }}>
           <div className="flex items-center gap-2">
-            <button type="button" className="inline-flex size-11 items-center justify-center rounded-md border border-line md:hidden" onClick={() => setOpen((v) => !v)} aria-label="Menu">☰</button>
+            <button type="button" className={`portal-menu-btn size-11 items-center justify-center rounded-md border border-line ${phone ? "inline-flex" : "inline-flex md:hidden"}`} onClick={() => setOpen((v) => !v)} aria-label="Menu">☰</button>
             <h1 className="font-display text-lg font-semibold">{title}</h1>
           </div>
           <div className="flex items-center gap-2">

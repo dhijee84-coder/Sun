@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Solan",
+      "hasCanvas": false,
+      "bodyTextLen": 1643,
+      "bodyTextHash": "d2a3b4edd6ccc2b5b738cd2b535646bac8efdef6eb2d5aa27bc26aa572844ee0",
+      "bodyTextPrefix": "Open-land farms, usage billing Buy panels at Chennai Solar Park ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/solan-home-fast.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Solan",
+      "hasCanvas": false,
+      "bodyTextLen": 1574,
+      "bodyTextHash": "5513c1f3de50429e8ec1a22f985174f74fbcb876d9382e9f136212fb8faaacab",
+      "bodyTextPrefix": "Open-land farms, usage billing Buy panels at Chennai Solar Park ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/solan-home-fast-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/solan-home-fast.json"
+}

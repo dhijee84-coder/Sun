@@ -68,3 +68,101 @@ html[data-theme="light"] {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* Phone layout — also applied when a desktop-wide preview iframe sits on a real phone */
+html[data-layout="phone"] {
+  -webkit-text-size-adjust: 100%;
+}
+
+html[data-layout="phone"] input,
+html[data-layout="phone"] select,
+html[data-layout="phone"] textarea {
+  font-size: 16px !important; /* stop iOS zoom on focus */
+}
+
+html[data-layout="phone"] .auth-split {
+  display: flex !important;
+  grid-template-columns: none !important;
+  min-height: 100dvh;
+}
+
+html[data-layout="phone"] .auth-hero {
+  display: none !important;
+}
+
+html[data-layout="phone"] .auth-mobile-bar {
+  display: flex !important;
+}
+
+html[data-layout="phone"] .auth-desktop-toggle {
+  display: none !important;
+}
+
+html[data-layout="phone"] .auth-card {
+  max-width: none !important;
+  width: 100%;
+  padding: 16px 20px 32px;
+}
+
+html[data-layout="phone"] .pub-nav-desktop {
+  display: none !important;
+}
+
+html[data-layout="phone"] .pub-nav-desktop.is-open {
+  display: flex !important;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 72px;
+  z-index: 30;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  border-bottom: 1px solid var(--sol-line);
+  background: var(--sol-card);
+  padding: 12px 16px 16px;
+}
+
+html[data-layout="phone"] .pub-nav-desktop.is-open a {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+html[data-layout="phone"] .pub-menu-btn {
+  display: inline-flex !important;
+}
+
+html[data-layout="phone"] .portal-grid {
+  display: block !important;
+  grid-template-columns: none !important;
+}
+
+html[data-layout="phone"] .portal-aside {
+  position: fixed;
+  inset: 64px 0 0 auto;
+  z-index: 40;
+  width: min(86vw, 320px);
+  height: calc(100dvh - 64px);
+  overflow: auto;
+  border-right: 1px solid var(--sol-line);
+  box-shadow: -12px 0 40px rgba(0, 0, 0, 0.25);
+}
+
+html[data-layout="phone"] .portal-aside.is-closed {
+  display: none !important;
+}
+
+html[data-layout="phone"] .portal-menu-btn {
+  display: inline-flex !important;
+}
+
+html[data-layout="phone"] .hero-copy h1 {
+  font-size: 2rem !important;
+  line-height: 1.15 !important;
+}
+
+html[data-layout="phone"] .hero-copy {
+  padding: 48px 20px 56px !important;
+  max-width: none !important;
+}

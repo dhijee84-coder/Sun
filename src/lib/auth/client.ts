@@ -67,6 +67,16 @@ function setBearerToken(token: string | null): void {
   }
 }
 
+/** Persist a session token from email/password (needed in the preview iframe). */
+export async function rememberEmailSession(token: string | null | undefined) {
+  if (token) setBearerToken(token);
+  try {
+    await authClient.getSession();
+  } catch {
+    /* session store recovers on next useSession */
+  }
+}
+
 /**
  * The sandbox live preview runs this app inside an iframe on a `*.grok-sandbox.com`
  * host, where a full-page redirect to the broker can't work — so sign-in uses a
