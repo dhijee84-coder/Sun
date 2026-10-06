@@ -24,9 +24,9 @@ function ClientDash() {
   const [msg, setMsg] = useState("");
 
   useEffect(() => {
-    if (!user) return;
+    if (isPending) return;
     getMe().then(setMe).catch(() => setMe(null));
-  }, [user]);
+  }, [user, isPending]);
 
   useEffect(() => {
     if (!me || me.role !== "CLIENT") return;
@@ -34,7 +34,7 @@ function ClientDash() {
   }, [me]);
 
   if (isPending) return <div className="grid min-h-screen place-items-center bg-bg text-muted">Loading…</div>;
-  if (!user) return <RedirectToSignIn to="/login" />;
+  if (!me && !user) return <RedirectToSignIn to="/login" />;
   if (me && me.role !== "CLIENT") return <Navigate to="/staff/dashboard" />;
   if (!me || !ov) return <div className="grid min-h-screen place-items-center bg-bg text-muted">Opening client portal…</div>;
 

@@ -2,8 +2,8 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { UserButton } from "@/lib/auth/gates";
 import { useCurrentUserState } from "@/lib/auth/use-current-user";
 import { useIsPhone } from "@/lib/solan/layout";
+import { BrandLogo } from "./brand-logo";
 import { ThemeToggle } from "./theme-toggle";
-import { Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 import { getPublicSite } from "@/lib/solan/public";
 import { getMe } from "@/lib/solan/profile";
@@ -58,12 +58,7 @@ export function PublicShell({ children }: { children: React.ReactNode }) {
       ) : null}
       <header className="sticky top-0 z-40 h-[72px] border-b border-line backdrop-blur-md" style={{ background: "var(--sol-header)" }}>
         <div className="mx-auto flex h-full max-w-6xl items-center justify-between gap-4 px-4">
-          <Link to="/" className="flex items-center gap-2.5 font-display text-[17px] font-bold text-fg no-underline">
-            <span className="inline-flex size-9 items-center justify-center rounded-md bg-gold text-bg">
-              <Sun className="size-4" />
-            </span>
-            SOL<span className="text-gold">AN</span>
-          </Link>
+          <BrandLogo />
           <nav className={`pub-nav-desktop ${open ? "is-open" : ""} ${phone ? (open ? "flex flex-col absolute left-0 right-0 top-[72px] z-30 border-b border-line bg-card p-4" : "hidden") : "hidden items-center gap-6 md:flex"}`}>
             {NAV.map((n) => (
               <Link key={n.to} to={n.to} className={`text-sm no-underline ${pathname === n.to ? "text-gold" : "text-fg/80 hover:text-gold"}`}>
@@ -94,7 +89,7 @@ export function PublicShell({ children }: { children: React.ReactNode }) {
       <footer className="mt-8 border-t border-line bg-[#0f172a] px-4 py-12 text-slate-200">
         <div className="mx-auto grid max-w-6xl gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <div className="font-display text-base font-bold">SOL<span className="text-gold">AN</span></div>
+            <BrandLogo />
             <p className="mt-2 text-sm text-slate-400">{footer.text || "We own the land and the farm. You own the panels. We maintain everything and bill energy on usage."}</p>
           </div>
           <div>

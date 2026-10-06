@@ -21,6 +21,20 @@ Password for all email accounts: `SolanFarm2026!`
 | Super Admin | `super@solan.energy` |
 | Primary Admin | `primary@solan.energy` |
 
+## Database (temporary SQLite → later live Postgres)
+
+**Now:** file **`sqlite.db`**. Login, panels, tickets, CMS and sessions all live there. No Neon required.
+
+**Later:** set `DATABASE_URL` to Neon/Postgres. Same app — it switches automatically.
+
+| Environment | File |
+|---|---|
+| Local / this preview | `sqlite.db` in the project (survives restart) |
+| Vercel (no `DATABASE_URL`) | `/tmp/solan.sqlite` (created and seeded on first request) |
+| Vercel with Neon | `DATABASE_URL` — live shared DB |
+
+Health: `GET /api/health` → `"db":"sqlite"` or `"db":"neon"`.
+
 ## Local / preview
 
 ```
@@ -28,15 +42,27 @@ npm install
 npm run dev
 ```
 
-Opens on `http://localhost:8080`. First page load seeds demo users, farms, and the 10-panel client.
+Opens on `http://localhost:8080`. First page load seeds demo users into `sqlite.db`.
 
-Health: `GET /api/health`
+## Vercel (SQLite now, Neon later)
 
-Auth and database are injected by the platform (`VITE_AUTH_ENABLED`, `DATABASE_URL`). Do not add a `.env` file.
+Minimum for demo login (SQLite):
 
-## Database
+| Name | Value |
+|---|---|
+| `BETTER_AUTH_SECRET` | long random string (keep it stable) |
+| `BETTER_AUTH_URL` | `https://YOUR-APP.vercel.app` (no trailing slash) |
+| `VITE_AUTH_ENABLED` | `true` |
 
-Postgres (Neon in production, PGLite in the sandbox preview). Schema lives in `migrations/`. Seeded on first request via `src/lib/solan/seed.ts`.
+Do **not** set `DATABASE_URL` until you have Neon. The app will use SQLite.
+
+When you are ready for a live shared database:
+
+| Name | Value |
+|---|---|
+| `DATABASE_URL` | Neon pooled string (`sslmode=require`) |
+
+Redeploy after saving env vars.
 
 ## Tests
 

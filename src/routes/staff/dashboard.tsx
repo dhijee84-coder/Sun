@@ -31,12 +31,12 @@ function StaffDash() {
   const [err, setErr] = useState("");
 
   useEffect(() => {
-    if (!user) return;
+    if (isPending) return;
     getMe().then(setMe).catch((e) => setErr(e.message));
-  }, [user]);
+  }, [user, isPending]);
 
   if (isPending) return <div className="grid min-h-screen place-items-center bg-bg text-muted">Loading…</div>;
-  if (!user) return <RedirectToSignIn to="/staff-login" />;
+  if (!user && !me) return <RedirectToSignIn to="/staff-login" />;
   if (me && me.role === "CLIENT") return <Navigate to="/client/dashboard" />;
   if (!me) return <div className="grid min-h-screen place-items-center bg-bg text-muted">{err || "Opening staff portal…"}</div>;
 

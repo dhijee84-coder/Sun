@@ -10,10 +10,17 @@ export const Route = createFileRoute("/api/health")({
           await ensureSeeded();
           const sql = await getSql();
           const users = await sql<{ n: number }>`select count(*)::int as n from "user"`;
+          const vercel = Boolean(process.env.VERCEL);
           return Response.json({
             ok: true,
             db: dbSource,
             users: users[0]?.n ?? 0,
+            vercel,
+            loginReady: true,
+            hint:
+              vercel && dbSource !== "neon"
+                ? "Using sqlite.db until DATABASE_URL (Neon) is set. Sessions persist on this instance; attach Neon for a live shared database."
+                : undefined,
           });
         } catch (err) {
           console.error("[solan] health failed", err);

@@ -1,7 +1,6 @@
-import { Link } from "@tanstack/react-router";
 import { UserButton } from "@/lib/auth/gates";
 import { ThemeToggle } from "./theme-toggle";
-import { Sun } from "lucide-react";
+import { BrandLogo } from "./brand-logo";
 import { useState } from "react";
 import { useIsPhone } from "@/lib/solan/layout";
 
@@ -28,10 +27,7 @@ export function PortalShell({
     <div className={`portal-grid min-h-screen bg-bg text-fg ${phone ? "block" : "md:grid md:grid-cols-[240px_1fr]"}`}>
       <aside className={`portal-aside border-line bg-card ${phone ? (open ? "fixed inset-y-0 right-0 z-40 mt-16 w-[min(86vw,320px)] overflow-auto border-l shadow-xl" : "hidden") : `md:sticky md:top-0 md:h-screen md:border-r ${open ? "block" : "hidden"} md:block`}`}>
         <div className="flex h-[64px] items-center gap-2 border-b border-line px-4">
-          <Link to="/" className="flex items-center gap-2 font-display text-sm font-bold text-fg no-underline">
-            <span className="inline-flex size-8 items-center justify-center rounded-md bg-gold text-bg"><Sun className="size-4" /></span>
-            SOL<span className="text-gold">AN</span>
-          </Link>
+          <BrandLogo compact />
         </div>
         <p className="px-4 pt-4 font-mono text-[10px] tracking-widest text-muted uppercase">{role.replace(/_/g, " ")}</p>
         <nav className="flex flex-col gap-0.5 p-2">

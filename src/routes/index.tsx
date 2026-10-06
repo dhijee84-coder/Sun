@@ -27,7 +27,7 @@ function Home() {
             src={s.image}
             alt=""
             fetchPriority={n === 0 ? "high" : "low"}
-            decoding={n === 0 ? "sync" : "async"}
+            decoding={n === 0 ? "async" : "async"}
             className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${n === i ? "opacity-100" : "opacity-0"}`}
           />
         ))}
