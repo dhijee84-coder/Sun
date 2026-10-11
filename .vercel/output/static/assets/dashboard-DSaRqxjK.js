@@ -1,0 +1,1 @@
+import{r as e}from"./useRouter-B4RdKobV.js";import{r as t}from"./index-BPu4wox_.js";var n=e(),r=()=>(0,n.jsx)(t,{to:`/staff/dashboard`});export{r as component};
